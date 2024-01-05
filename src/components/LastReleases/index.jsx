@@ -33,6 +33,7 @@ const LastReleases = () => {
                      key={book.id} 
                      src={book.src} 
                      alt={book.name}
+                     style={{ width: '250px' }}
                     />
                ))}
            </NewBooksContainer>

@@ -1,7 +1,8 @@
-import Logo from "../Logo";
-import HeaderOptions from "../HeaderOptions"; 
-import HeaderIcons from "../HeaderIcons";
+import Logo from '../Logo';
+import HeaderOptions from '../HeaderOptions'; 
+import HeaderIcons from '../HeaderIcons';
 import styled from 'styled-components'
+import { Link } from 'react-router-dom';
 
 const HeaderContainer = styled.header`
   font-family: var(--secundary-font);
@@ -17,7 +18,9 @@ const HeaderContainer = styled.header`
 const Header = () => {
     return (
         <HeaderContainer>
-            <Logo />
+            <Link to="/">
+                <Logo />
+            </Link>
             <HeaderOptions />
             <HeaderIcons />
         </HeaderContainer>

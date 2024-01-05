@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const OptionsContainer = styled.ul`
     display: flex;
@@ -22,7 +23,7 @@ const Options = styled.li`
 `;
 
 const HeaderOptions = () => {
-    const options = ["Categoria", "Favorito", "Minha estante"];
+    const options = ["Categoria", "Favoritos", "Estante"];
 
     return (
         <OptionsContainer>
@@ -30,7 +31,9 @@ const HeaderOptions = () => {
                 <Options 
                   key={index}
                 >
-                {option.toUpperCase()}
+                <Link to={`/${option.toLowerCase()}`}>
+                    {option.toUpperCase()}
+                </Link>
             </Options>    
             )}
         </OptionsContainer>

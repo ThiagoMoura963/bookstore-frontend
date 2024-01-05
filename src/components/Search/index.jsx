@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import InputDefault from "../InputDefault";
 import { FaSearch } from "react-icons/fa";
-import { useState } from "react";
-import { books } from "../SearchData";
+import { useEffect, useState } from "react";
+import { getBooks } from "../../services/book.js";
+import Loader from "../Loader/index.jsx";
 
 const SearchContainer = styled.form`
     font-family: 'Poppins', sans-serif;
@@ -65,20 +66,34 @@ const ResultContainer = styled.div`
 const BookTitle = styled.p`
     font-size: 1rem;
     width: 12.5rem;
+    margin: 0 auto;
     white-space: pre-line;
-    margin-bottom: 0.5rem;
 `;
 
 const Search = () => {
     const [searchedBooks, setSearchedBooks] = useState("");
     const [filteredBooks, setFilteredBooks] = useState([]);
+    const [books, setBooks] = useState([]);
+
+    useEffect(() => {
+        fetchBooks();
+    }, []);
+
+    const fetchBooks = async () => {
+        try {
+            const booksInAPI = await getBooks();
+            setBooks(booksInAPI);
+        } catch (error) {
+            console.error(error);
+        } 
+    }
 
     const onSearchBook = (e) => {
         e.preventDefault();
 
         setFilteredBooks(
             books.filter((book) => {
-                return book.name.includes(searchedBooks);
+                return book.title.includes(searchedBooks);
             })
         )
     }
@@ -104,21 +119,25 @@ const Search = () => {
                 </InputDefault>
             </SearchContainer>
             <ResultContainer>
+                <Loader />
                 {filteredBooks.map((book => {
                     return (
                         <div key={book.id}>
                             <div>
                                 <img
                                     src={book.src}
-                                    alt={book.name}
+                                    alt={book.title}
+                                    style={{ width: '250px', margin: '0 auto' }}
+
                                 />
                             </div>
                             <div>
-                                <BookTitle>{book.name}</BookTitle>
+                                <BookTitle>{book.title}</BookTitle>
                             </div>
                         </div>
                     )
                 }))}
+
             </ResultContainer>
         </>
     )

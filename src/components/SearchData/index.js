@@ -2,10 +2,10 @@ import book from "../../assets/book.png";
 import bookRecommend from "../../assets/book.png"
 
 const books = [
-    { id: 1, name: "Aprendendo React", src: book },
-    { id: 2, name: "Estilizando Websites com CSS", src: book },
-    { id: 3, name: "Como desenvolver uma aplicação FullStack", src: book },
-    { id: 4, name: "Aprendendo VueJS", src: book }
+    { id: 1, name: "Harry Potter e a Pedra Filosofal", src: book },
+    { id: 2, name: "Harry Potter e a Pedra Filosofal", src: book },
+    { id: 3, name: "Harry Potter e a Pedra Filosofal", src: book },
+    { id: 4, name: "Harry Potter e a Pedra Filosofal", src: book }
 ];
 
 const recommendBooks = [
