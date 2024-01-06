@@ -14,7 +14,6 @@ const LogoContainer = styled.div`
     }
 `;
 
-
 const Logo = () => {
     return (
         <LogoContainer>

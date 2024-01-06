@@ -18,6 +18,22 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
   }
+
+  body {
+    background-color: var(--light-gray);
+
+    ::-webkit-scrollbar {
+      background-color: #1d1d1d;
+      width: 10px;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb{
+      background-color: #5b5b5b;
+      border-radius: 5px;
+    }
+  }
 `;
 
 export default GlobalStyle;

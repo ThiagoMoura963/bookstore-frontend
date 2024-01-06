@@ -3,7 +3,9 @@ import InputDefault from "../InputDefault";
 import { FaSearch } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { getBooks } from "../../services/book.js";
-import Loader from "../Loader/index.jsx";
+import bookImg from "../../assets/book.png";
+import { postFavorite } from "../../services/favorites.js";
+import { toast } from 'react-toastify';
 
 const SearchContainer = styled.form`
     font-family: 'Poppins', sans-serif;
@@ -64,10 +66,23 @@ const ResultContainer = styled.div`
 `;
 
 const BookTitle = styled.p`
-    font-size: 1rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--base-color);
     width: 12.5rem;
     margin: 0 auto;
     white-space: pre-line;
+`;
+
+const BookImage = styled.img`
+    width: 250px; 
+    margin: 0 auto;
+    cursor: pointer;
+    transition: transform .2s;
+
+    &:hover {
+        transform: scale(1.1);
+    }
 `;
 
 const Search = () => {
@@ -86,6 +101,11 @@ const Search = () => {
         } catch (error) {
             console.error(error);
         } 
+    }
+
+    const insertFavorite = async (id) => {
+        await postFavorite(id);
+        toast.success("Livro inserido com sucesso");
     }
 
     const onSearchBook = (e) => {
@@ -115,20 +135,17 @@ const Search = () => {
                             />
                         </ButtonSearch>
                     </SearchIconContainer>
-
                 </InputDefault>
             </SearchContainer>
             <ResultContainer>
-                <Loader />
                 {filteredBooks.map((book => {
                     return (
                         <div key={book.id}>
                             <div>
-                                <img
-                                    src={book.src}
+                                <BookImage
+                                    src={bookImg}
                                     alt={book.title}
-                                    style={{ width: '250px', margin: '0 auto' }}
-
+                                    onClick={() => insertFavorite(book.id)}
                                 />
                             </div>
                             <div>

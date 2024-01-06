@@ -15,12 +15,23 @@ const HeaderContainer = styled.header`
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 `;
 
+const StyledLink = styled(Link)`
+    color: var(--white);
+    text-decoration: none;
+    transition: all .2s;
+
+    &:hover {
+        color: var(--highlight-color);
+    }
+`;
+
+
 const Header = () => {
     return (
         <HeaderContainer>
-            <Link to="/">
+            <StyledLink to="/">
                 <Logo />
-            </Link>
+            </StyledLink>
             <HeaderOptions />
             <HeaderIcons />
         </HeaderContainer>

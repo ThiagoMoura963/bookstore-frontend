@@ -15,6 +15,11 @@ const Options = styled.li`
     padding: 0 .4rem;
     cursor: pointer;
     min-width: 7.5rem;
+`;
+
+const StyledLink = styled(Link)`
+    color: var(--white);
+    text-decoration: none;
     transition: all .2s;
 
     &:hover {
@@ -31,9 +36,9 @@ const HeaderOptions = () => {
                 <Options 
                   key={index}
                 >
-                <Link to={`/${option.toLowerCase()}`}>
+                <StyledLink to={`/${option.toLowerCase()}`}>
                     {option.toUpperCase()}
-                </Link>
+                </StyledLink>
             </Options>    
             )}
         </OptionsContainer>
